@@ -14,11 +14,6 @@ module.exports = {
         //game.camera.y = 2000;
         game.physics.startSystem(Phaser.Physics.ARCADE);
        this.sky =  game.add.sprite(0, 0, 'sky');
-       this.mountains =  game.add.sprite(0, 0, 'mountains');
-       this.sky.alpha = 0;
-       this.mountains.alpha = 1;
-        game.add.tween(this.sky).to( { alpha: 1 }, 3000, "Linear", true);
-        game.add.tween(this.mountains).to( { alpha: 0 }, 3000, "Linear", true);
         platforms = game.add.group();
         platforms.enableBody = true;
         for (var i = 0; i < 20; i++) {

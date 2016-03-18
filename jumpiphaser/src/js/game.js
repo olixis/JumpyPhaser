@@ -19,6 +19,9 @@ gyro.startTracking(function (o) {
 game.forceSingleUpdate = true;
 
 game.state.add('boot',require('./states/Boot.js'));
-
+game.state.add('load',require('./states/Load.js'));
+game.state.add('menu',require('./states/Menu.js'));
+game.state.add('play',require('./states/Play.js'));
 
 game.state.start('boot');
+
