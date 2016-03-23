@@ -14,6 +14,8 @@ module.exports = {
     preload: function(){
         this.loadingLabel();
         game.load.image('sky', 'assets/sky.png');
+        game.load.image('grass', 'assets/grass.png');
+        game.load.image('bg', 'assets/background.png');
         game.load.image('mountains', 'assets/space.jpg');
         game.load.spritesheet('jumpi', 'assets/jumpiQuicando.png',30,40);
         game.load.spritesheet('platGrama', 'assets/PlataformaGrama.png', 50, 20);
