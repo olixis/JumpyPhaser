@@ -13,12 +13,14 @@ module.exports = {
     },
     preload: function(){
         this.loadingLabel();
-        game.load.image('sky', 'assets/sky.png');
-        game.load.image('grass', 'assets/grass.png');
         game.load.image('bg', 'assets/background.png');
-        game.load.image('mountains', 'assets/space.jpg');
-        game.load.spritesheet('jumpi', 'assets/jumpiQuicando.png',30,40);
-        game.load.spritesheet('platGrama', 'assets/PlataformaGrama.png', 50, 20);
+        game.load.image('plataforma', 'assets/plataforma.png');
+        game.load.image('chao', 'assets/chao.png');
+        game.load.image('cortina_left', 'assets/cortina_left.png');
+        game.load.image('cortina_top', 'assets/cortina_top.png');
+        game.load.image('cortina_right', 'assets/cortina_right.png');
+        game.load.image('hud1', 'assets/hud1.png');
+        game.load.spritesheet('jumpi', 'assets/ErosStand.png',76,81);
     },
     create: function(){
         game.state.start('play');
