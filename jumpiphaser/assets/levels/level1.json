@@ -1,0 +1,25 @@
+{
+  "height": 2000,
+  "plataformas": [
+    {
+      "posX": 225,
+      "posY": 1100,
+      "platType": "plataforma"
+    },
+    {
+      "posX": 225,
+      "posY": 1300,
+      "platType": "plataforma"
+    },
+    {
+      "posX": 225,
+      "posY": 1500,
+      "platType": "plataforma"
+    },
+    {
+      "posX": 225,
+      "posY": 1800,
+      "platType": "plataforma"
+    }
+  ]
+}

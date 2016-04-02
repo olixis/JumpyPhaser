@@ -69,6 +69,7 @@ module.exports = {
         game.load.image('cortina_right', 'assets/cortina_right.png');
         game.load.image('hud1', 'assets/hud1.png');
         game.load.spritesheet('jumpi', 'assets/ErosStand.png',76,81);
+        game.load.json('level1', 'assets/levels/level1.json');
     },
     create: function(){
         game.state.start('play');
@@ -96,43 +97,17 @@ module.exports = {
  * Created by caio on 16/02/2016.
  */
 module.exports = {
-    plataforma: undefined,
+
     preload: function () {
 
     },
     create: function () {
-        game.world.setBounds(0, 0, 450, 2000);
+        levelInfo = game.cache.getJSON('level1');
         console.log(game.camera.height);
         game.camera.y = 0;
         game.physics.startSystem(Phaser.Physics.ARCADE);
-        sky = game.add.sprite(0, 0, 'bg');
-        sky.fixedToCamera = true;
-        chao = game.add.sprite(0, 1860, 'chao');
-        cortinaLeft = game.add.sprite(0, 0, 'cortina_left');
-        cortinaLeft.fixedToCamera = true;
-        cortinaRight = game.add.sprite(371, 0, 'cortina_right');
-        cortinaRight.fixedToCamera = true;
-        cortinaTop = game.add.sprite(0, 0, 'cortina_top');
-        cortinaTop.fixedToCamera = true;
-        hud = game.add.sprite(60, 89, 'hud1');
-        hud.fixedToCamera = true;
-
-        platforms = game.add.group();
-        platforms.enableBody = true;
-        //chaoInicial = game.add.group();
-        //chaoInicial.enableBody = true;
-
-        plataforma = platforms.create(game.world.centerX, 1800, 'plataforma');
-        plataforma.anchor.setTo(0.5);
-        plataforma.body.immovable = true;
-        plataforma2 = platforms.create(game.world.centerX, 1500, 'plataforma');
-        plataforma2.anchor.setTo(0.5);
-        plataforma2.body.immovable = true;
-
-
-        //initialGround = chaoInicial.create(0,1200,'grass');
-        //initialGround.body.immovable = true;
-
+        this.loadBGAndHUD();
+        this.loadLevelJSON();
 
         player = game.add.sprite(game.world.centerX, 1700, 'jumpi');
         game.camera.follow(player);
@@ -181,7 +156,32 @@ module.exports = {
     },
     zerarSpeedH: function () {
         player.body.velocity.x = 0;
+    },
+    loadBGAndHUD: function () {
+        sky = game.add.sprite(0, 0, 'bg');
+        sky.fixedToCamera = true;
+        chao = game.add.sprite(0, 1860, 'chao');
+        cortinaLeft = game.add.sprite(0, 0, 'cortina_left');
+        cortinaLeft.fixedToCamera = true;
+        cortinaRight = game.add.sprite(371, 0, 'cortina_right');
+        cortinaRight.fixedToCamera = true;
+        cortinaTop = game.add.sprite(0, 0, 'cortina_top');
+        cortinaTop.fixedToCamera = true;
+        hud = game.add.sprite(60, 89, 'hud1');
+        hud.fixedToCamera = true;
+    },
+    loadLevelJSON: function () {
+        game.world.setBounds(0, 0, 450, levelInfo.height);
+        platforms = game.add.group();
+        platforms.enableBody = true;
+        for(var i = 0; i<levelInfo.plataformas.length;i++){
+            var plataforma = platforms.create(levelInfo.plataformas[i].posX, levelInfo.plataformas[i].posY, levelInfo.plataformas[i].platType);
+                plataforma.anchor.setTo(0.5);
+                plataforma.body.immovable = true;
+        }
+
     }
+
 };
 
 

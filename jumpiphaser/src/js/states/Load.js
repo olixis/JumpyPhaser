@@ -21,6 +21,7 @@ module.exports = {
         game.load.image('cortina_right', 'assets/cortina_right.png');
         game.load.image('hud1', 'assets/hud1.png');
         game.load.spritesheet('jumpi', 'assets/ErosStand.png',76,81);
+        game.load.json('level1', 'assets/levels/level1.json');
     },
     create: function(){
         game.state.start('play');
